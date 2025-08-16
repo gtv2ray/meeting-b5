@@ -5,7 +5,6 @@ import { Card, Tabs, TabsList, TabsTrigger, TabsContent, useToast } from '@/comp
 // @ts-ignore;
 import { Users, Building, Shield } from 'lucide-react';
 
-// 确保使用正确的导入路径
 import UserManagement from '@/components/UserManagement';
 import DepartmentManagement from '@/components/DepartmentManagement';
 import PermissionManagement from '@/components/PermissionManagement';

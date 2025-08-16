@@ -5,9 +5,9 @@ import { Button, Table, Input, Select, Modal, Badge, useToast } from '@/componen
 // @ts-ignore;
 import { Plus, Edit, Trash, Search } from 'lucide-react';
 
-export default function UserManagement({
+const UserManagement = ({
   $w
-}) {
+}) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -157,4 +157,5 @@ export default function UserManagement({
         </Modal.Footer>
       </Modal>
     </div>;
-}
+};
+export default UserManagement;
