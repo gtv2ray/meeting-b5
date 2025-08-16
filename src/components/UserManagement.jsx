@@ -5,7 +5,7 @@ import { Button, Table, Input, Select, Modal, Badge, useToast } from '@/componen
 // @ts-ignore;
 import { Plus, Edit, Trash, Search } from 'lucide-react';
 
-export default function UserManagement({
+function UserManagement({
   $w
 }) {
   const [users, setUsers] = useState([]);
@@ -158,3 +158,4 @@ export default function UserManagement({
       </Modal>
     </div>;
 }
+export default UserManagement;

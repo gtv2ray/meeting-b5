@@ -1,15 +1,13 @@
 // @ts-ignore;
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // @ts-ignore;
 import { Button, Card, Tabs, TabsList, TabsTrigger, TabsContent, useToast } from '@/components/ui';
 // @ts-ignore;
 import { Users, Building, Shield } from 'lucide-react';
 
-// @ts-ignore;
+// 确保使用正确的导入路径
 import UserManagement from '@/components/UserManagement';
-// @ts-ignore;
 import DepartmentManagement from '@/components/DepartmentManagement';
-// @ts-ignore;
 import PermissionManagement from '@/components/PermissionManagement';
 export default function AdminDashboard(props) {
   const {
