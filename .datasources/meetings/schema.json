@@ -1,0 +1,54 @@
+
+    {
+      "name": "meetings",
+      "title": "会议管理",
+      "schemas": [
+        {
+          "name": "title",
+          "title": "会议标题",
+          "type": "String"
+        },
+        {
+          "name": "date",
+          "title": "会议日期",
+          "type": "Date",
+          "format": "date"
+        },
+        {
+          "name": "time",
+          "title": "会议时间",
+          "type": "String"
+        },
+        {
+          "name": "location",
+          "title": "会议地点",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "title": "会议描述",
+          "type": "MultiLineString"
+        },
+        {
+          "name": "participants",
+          "title": "参会人员",
+          "type": "Array",
+          "items": {
+            "type": "Object",
+            "properties": [
+              {
+                "name": "name",
+                "title": "姓名",
+                "type": "String"
+              },
+              {
+                "name": "role",
+                "title": "角色",
+                "type": "String"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  

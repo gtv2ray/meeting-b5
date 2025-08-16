@@ -1,0 +1,28 @@
+
+    [
+      {
+        "_id": "1",
+        "name": "技术部",
+        "description": "负责技术开发和维护",
+        "status": true,
+        "createdAt": 1755360824470,
+        "updatedAt": 1755360824470
+      },
+      {
+        "_id": "2",
+        "name": "市场部",
+        "description": "负责市场推广和销售",
+        "status": true,
+        "createdAt": 1755360824470,
+        "updatedAt": 1755360824470
+      },
+      {
+        "_id": "3",
+        "name": "人事部",
+        "description": "负责人员招聘和管理",
+        "status": true,
+        "createdAt": 1755360824470,
+        "updatedAt": 1755360824470
+      }
+    ]
+  

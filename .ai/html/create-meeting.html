@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建会议 - 会议管理系统</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .flatpickr-input {
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.5rem 0.75rem;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    <!-- 侧边栏 -->
+    <div class="w-64 bg-blue-800 text-white p-4">
+      <div class="flex items-center mb-8">
+        <i class="fas fa-calendar-alt text-2xl mr-2"></i>
+        <h1 class="text-xl font-bold">会议管理系统</h1>
+      </div>
+      <nav>
+        <a href="index.html" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-home mr-3"></i>
+          <span>首页</span>
+        </a>
+        <a href="create-meeting.html" class="flex items-center py-2 px-4 bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-calendar-plus mr-3"></i>
+          <span>创建会议</span>
+        </a>
+        <a href="#" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-users mr-3"></i>
+          <span>参会人员</span>
+        </a>
+        <a href="#" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-file-alt mr-3"></i>
+          <span>会议纪要</span>
+        </a>
+        <a href="#" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-cog mr-3"></i>
+          <span>设置</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="flex-1 overflow-auto p-8">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">创建新会议</h2>
+        <div>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg mr-2">
+            取消
+          </button>
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+            保存
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">基本信息</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">会议主题*</label>
+            <input type="text" class="w-full border rounded px-3 py-2" placeholder="请输入会议主题">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">会议类型</label>
+            <select class="w-full border rounded px-3 py-2">
+              <option>常规会议</option>
+              <option>项目评审</option>
+              <option>头脑风暴</option>
+              <option>客户会议</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">开始时间*</label>
+            <input type="text" id="start-time" class="flatpickr-input" placeholder="选择开始时间">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">结束时间*</label>
+            <input type="text" id="end-time" class="flatpickr-input" placeholder="选择结束时间">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">会议地点</label>
+            <select class="w-full border rounded px-3 py-2">
+              <option>线上会议</option>
+              <option>1楼大会议室</option>
+              <option>2楼小会议室</option>
+              <option>3楼会议室</option>
+              <option>其他地点</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">主持人*</label>
+            <select class="w-full border rounded px-3 py-2">
+              <option>请选择主持人</option>
+              <option>张经理</option>
+              <option>李总监</option>
+              <option>王总</option>
+              <option>赵主管</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">会议描述</h3>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">会议描述</label>
+          <textarea class="w-full border rounded px-3 py-2 h-32" placeholder="请输入会议描述、背景和目标..."></textarea>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">会议议程</h3>
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">议程项目</label>
+                <input type="text" class="w-full border rounded px-3 py-2" placeholder="议程标题">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">开始时间</label>
+                <input type="text" class="flatpickr-input" placeholder="选择时间">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">负责人</label>
+                <input type="text" class="w-full border rounded px-3 py-2" placeholder="负责人姓名">
+              </div>
+            </div>
+            <button class="ml-4 text-red-500 hover:text-red-700 mt-7">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <button class="text-blue-600 hover:text-blue-800 flex items-center">
+            <i class="fas fa-plus mr-2"></i>
+            添加议程项目
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">参会人员</h3>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">添加参会人员</label>
+          <div class="flex">
+            <select class="flex-1 border rounded-l px-3 py-2">
+              <option>选择部门或人员</option>
+              <option>产品部</option>
+              <option>技术部</option>
+              <option>设计部</option>
+              <option>市场部</option>
+            </select>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-r">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden">
+          <div class="bg-gray-50 p-3 border-b flex justify-between items-center">
+            <span class="font-medium">已添加人员 (3)</span>
+            <button class="text-blue-600 hover:text-blue-800 text-sm">
+              全选
+            </button>
+          </div>
+          <ul class="divide-y divide-gray-200">
+            <li class="p-3 flex items-center">
+              <input type="checkbox" class="mr-3 h-4 w-4 text-blue-600">
+              <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+              <div class="flex-1">
+                <p class="font-medium">张经理</p>
+                <p class="text-sm text-gray-500">产品部</p>
+              </div>
+              <button class="text-red-500 hover:text-red-700">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </li>
+            <li class="p-3 flex items-center">
+              <input type="checkbox" class="mr-3 h-4 w-4 text-blue-600">
+              <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+              <div class="flex-1">
+                <p class="font-medium">李技术</p>
+                <p class="text-sm text-gray-500">技术部</p>
+              </div>
+              <button class="text-red-500 hover:text-red-700">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </li>
+            <li class="p-3 flex items-center">
+              <input type="checkbox" class="mr-3 h-4 w-4 text-blue-600">
+              <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+              <div class="flex-1">
+                <p class="font-medium">王设计</p>
+                <p class="text-sm text-gray-500">设计部</p>
+              </div>
+              <button class="text-red-500 hover:text-red-700">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // 初始化日期时间选择器
+    flatpickr("#start-time", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      minDate: "today"
+    });
+
+    flatpickr("#end-time", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      minDate: "today"
+    });
+
+    // 保存按钮点击事件
+    document.querySelector('.bg-blue-600').addEventListener('click', function() {
+      alert('会议已保存');
+      window.location.href = 'meeting-detail.html';
+    });
+
+    // 取消按钮点击事件
+    document.querySelector('.bg-gray-300').addEventListener('click', function() {
+      if (confirm('确定要取消创建会议吗？所有未保存的内容将丢失。')) {
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
+  

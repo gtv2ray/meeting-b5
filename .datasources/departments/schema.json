@@ -1,0 +1,23 @@
+
+    {
+      "name": "departments",
+      "title": "部门管理",
+      "schemas": [
+        {
+          "name": "name",
+          "title": "部门名称",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "title": "部门描述",
+          "type": "MultiLineString"
+        },
+        {
+          "name": "status",
+          "title": "状态",
+          "type": "Boolean"
+        }
+      ]
+    }
+  

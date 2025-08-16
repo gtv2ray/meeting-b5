@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部门管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .dark {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        .dark .card {
+            background-color: #2d3748;
+        }
+        .sidebar {
+            transition: all 0.3s;
+        }
+        .tree-item {
+            position: relative;
+            padding-left: 20px;
+        }
+        .tree-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #4a5568;
+        }
+        .tree-item:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 15px;
+            height: 2px;
+            background-color: #4a5568;
+        }
+        .tree-item:last-child:before {
+            height: 15px;
+        }
+    </style>
+</head>
+<body class="dark min-h-screen flex">
+    <!-- 侧边栏 -->
+    <div class="sidebar w-64 bg-gray-800 text-gray-100 p-4">
+        <div class="flex items-center space-x-2 mb-8">
+            <i class="fas fa-shield-alt text-blue-400 text-2xl"></i>
+            <h1 class="text-xl font-bold">Admin Pro</h1>
+        </div>
+        
+        <nav>
+            <div class="space-y-2">
+                <a href="index.html" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>仪表盘</span>
+                </a>
+                <a href="users.html" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <i class="fas fa-users"></i>
+                    <span>用户管理</span>
+                </a>
+                <a href="departments.html" class="flex items-center space-x-2 p-2 rounded bg-gray-700">
+                    <i class="fas fa-sitemap"></i>
+                    <span>部门管理</span>
+                </a>
+                <a href="permissions.html" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <i class="fas fa-user-shield"></i>
+                    <span>权限控制</span>
+                </a>
+                <a href="settings.html" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <i class="fas fa-cog"></i>
+                    <span>系统设置</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="flex-1 flex flex-col">
+        <!-- 顶部导航 -->
+        <header class="bg-gray-700 p-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button id="sidebarToggle" class="text-gray-300 hover:text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="text-lg font-semibold">部门管理</h2>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fas fa-bell text-gray-300 hover:text-white cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="h-8 w-8 rounded-full">
+                    <span class="text-sm">管理员</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 内容区 -->
+        <main class="flex-1 p-6 overflow-auto">
+            <!-- 部门管理 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 部门树 -->
+                <div class="card p-6 rounded-lg shadow lg:col-span-1">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">部门结构</h3>
+                        <button id="addDeptBtn" class="bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-sm flex items-center space-x-1">
+                            <i class="fas fa-plus"></i>
+                            <span>添加部门</span>
+                        </button>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="tree-item">
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded cursor-pointer">
+                                <div class="flex items-center">
+                                    <i class="fas fa-building mr-2 text-blue-400"></i>
+                                    <span>公司总部</span>
+                                </div>
+                                <div class="flex space-x-1">
+                                    <button class="text-blue-400 hover:text-blue-300 text-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="text-red-400 hover:text-red-300 text-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="space-y-2 ml-4">
+                                <div class="tree-item">
+                                    <div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded cursor-pointer">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-laptop-code mr-2 text-purple-400"></i>
+                                            <span>技术部</span>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <button class="text-blue-400 hover:text-blue-300 text-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-300 text-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2 ml-4">
+                                        <div class="tree-item">
+                                            <div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded cursor-pointer">
+                                                <div class="flex items-center">
+                                                    <i class="fas fa-code mr-2 text-green-400"></i>
+                                                    <span>前端开发组</span>
+                                                </div>
+                                                <div class="flex space-x-1">
+                                                    <button class="text-blue-400 hover:text-blue-300 text-sm">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="text-red-400 hover:text-red-300 text-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tree-item">
+                                            <div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded cursor-pointer">
+                                                <div class="flex items-center">
+                                                    <i class="fas fa-server mr-2 text-yellow-400"></i>
+                                                    <span>后端开发组</span>
+                                                </div>
+                                                <div class="flex space-x-1">
+                                                    <button class="text-blue-400 hover:text-blue-300 text-sm">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="text-red-400 hover:text-red-300 text-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-item">
+                                    <div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded cursor-pointer">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-chart-line mr-2 text-red-400"></i>
+                                            <span>市场部</span>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <button class="text-blue-400 hover:text-blue-300 text-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-300 text-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-item">
+                                    <div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded cursor-pointer">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-money-bill-wave mr-2 text-green-400"></i>
+                                            <span>财务部</span>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <button class="text-blue-400 hover:text-blue-300 text-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-300 text-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 部门详情 -->
+                <div class="card p-6 rounded-lg shadow lg:col-span-2">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">部门详情</h3>
+                        <button class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-sm">
+                            <i class="fas fa-save mr-1"></i>
+                            <span>保存更改</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">部门名称</label>
+                            <input type="text" value="技术部" class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">部门编码</label>
+                            <input type="text" value="TECH" class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">上级部门</label>
+                            <select class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none">
+                                <option>公司总部</option>
+                                <option>市场部</option>
+                                <option>财务部</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">部门负责人</label>
+                            <select class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none">
+                                <option>张丽 (zhangli@example.com)</option>
+                                <option>王伟 (wangwei@example.com)</option>
+                                <option>李娜 (lina@example.com)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm text-gray-400 mb-1">部门描述</label>
+                        <textarea class="w-full bg-gray-700 rounded px-3 py-2 h-24 focus:outline-none focus:ring-2 focus:ring-blue-500">负责公司所有技术相关事务，包括产品开发、技术支持和系统维护。</textarea>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-4">部门成员 (24人)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="text-left text-gray-400 border-b border-gray-700">
+                                    <th class="pb-2">姓名</th>
+                                    <th class="pb-2">职位</th>
+                                    <th class="pb-2">角色</th>
+                                    <th class="pb-2">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-700 hover:bg-gray-700">
+                                    <td class="py-3 flex items-center">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="h-8 w-8 rounded-full mr-2">
+                                        <span>张丽</span>
+                                    </td>
+                                    <td>技术总监</td>
+                                    <td><span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">管理员</span></td>
+                                    <td>
+                                        <button class="text-red-400 hover:text-red-300 text-sm">
+                                            <i class="fas fa-user-minus"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-700 hover:bg-gray-700">
+                                    <td class="py-3 flex items-center">
+                                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="h-8 w-8 rounded-full mr-2">
+                                        <span>赵强</span>
+                                    </td>
+                                    <td>高级工程师</td>
+                                    <td><span class="px-2 py-1 bg-gray-500 text-white text-xs rounded-full">普通用户</span></td>
+                                    <td>
+                                        <button class="text-red-400 hover:text-red-300 text-sm">
+                                            <i class="fas fa-user-minus"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-700 hover:bg-gray-700">
+                                    <td class="py-3 flex items-center">
+                                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="h-8 w-8 rounded-full mr-2">
+                                        <span>李娜</span>
+                                    </td>
+                                    <td>UI设计师</td>
+                                    <td><span class="px-2 py-1 bg-gray-500 text-white text-xs rounded-full">普通用户</span></td>
+                                    <td>
+                                        <button class="text-red-400 hover:text-red-300 text-sm">
+                                            <i class="fas fa-user-minus"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <button class="text-blue-400 hover:text-blue-300 text-sm">
+                            <i class="fas fa-plus mr-1"></i>
+                            <span>添加成员</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 添加部门模态框 -->
+    <div id="addDeptModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+                <h3 class="text-lg font-semibold">添加新部门</h3>
+                <button id="closeDeptModal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <form>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">部门名称</label>
+                            <input type="text" class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">部门编码</label>
+                            <input type="text" class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">上级部门</label>
+                            <select class="w-full bg-gray-700 rounded px-3 py-2 focus:outline-none">
+                                <option>公司总部</option>
+                                <option>技术部</option>
+                                <option>市场部</option>
+                                <option>财务部</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">部门描述</label>
+                            <textarea class="w-full bg-gray-700 rounded px-3 py-2 h-20 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end space-x-3">
+                        <button type="button" id="cancelAddDept" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded">
+                            取消
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">
+                            创建部门
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 侧边栏切换
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('w-64');
+            document.querySelector('.sidebar').classList.toggle('w-16');
+            document.querySelectorAll('.sidebar span').forEach(el => {
+                el.classList.toggle('hidden');
+            });
+        });
+
+        // 部门树展开/折叠
+        document.querySelectorAll('.tree-item > div').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('fa-edit') && !e.target.classList.contains('fa-trash')) {
+                    const subTree = this.nextElementSibling;
+                    if (subTree) {
+                        subTree.classList.toggle('hidden');
+                    }
+                }
+            });
+        });
+
+        // 部门模态框控制
+        const addDeptBtn = document.getElementById('addDeptBtn');
+        const addDeptModal = document.getElementById('addDeptModal');
+        const closeDeptModal = document.getElementById('closeDeptModal');
+        const cancelAddDept = document.getElementById('cancelAddDept');
+
+        addDeptBtn.addEventListener('click', () => {
+            addDeptModal.classList.remove('hidden');
+        });
+
+        closeDeptModal.addEventListener('click', () => {
+            addDeptModal.classList.add('hidden');
+        });
+
+        cancelAddDept.addEventListener('click', () => {
+            addDeptModal.classList.add('hidden');
+        });
+
+        // 点击模态框外部关闭
+        addDeptModal.addEventListener('click', (e) => {
+            if (e.target === addDeptModal) {
+                addDeptModal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
+  

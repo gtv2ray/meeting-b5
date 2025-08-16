@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会议详情 - 会议管理系统</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .file-item:hover {
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    <!-- 侧边栏 -->
+    <div class="w-64 bg-blue-800 text-white p-4">
+      <div class="flex items-center mb-8">
+        <i class="fas fa-calendar-alt text-2xl mr-2"></i>
+        <h1 class="text-xl font-bold">会议管理系统</h1>
+      </div>
+      <nav>
+        <a href="index.html" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-home mr-3"></i>
+          <span>首页</span>
+        </a>
+        <a href="create-meeting.html" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-calendar-plus mr-3"></i>
+          <span>创建会议</span>
+        </a>
+        <a href="#" class="flex items-center py-2 px-4 bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-users mr-3"></i>
+          <span>参会人员</span>
+        </a>
+        <a href="#" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-file-alt mr-3"></i>
+          <span>会议纪要</span>
+        </a>
+        <a href="#" class="flex items-center py-2 px-4 hover:bg-blue-700 rounded-lg mb-2">
+          <i class="fas fa-cog mr-3"></i>
+          <span>设置</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="flex-1 overflow-auto p-8">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800">产品需求评审会</h2>
+          <p class="text-gray-600">2025-08-16 14:00 - 15:30 | 线上会议</p>
+        </div>
+        <div class="flex space-x-3">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-edit mr-2"></i>
+            编辑
+          </button>
+          <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-trash-alt mr-2"></i>
+            删除
+          </button>
+        </div>
+      </div>
+
+      <!-- 会议状态栏 -->
+      <div class="bg-blue-100 border-l-4 border-blue-600 text-blue-800 p-4 mb-6 rounded-r">
+        <div class="flex items-center">
+          <i class="fas fa-info-circle mr-3"></i>
+          <div>
+            <p class="font-medium">会议状态: <span class="font-bold">进行中</span></p>
+            <p class="text-sm">会议已开始，还有45分钟结束</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 标签页导航 -->
+      <div class="border-b border-gray-200 mb-6">
+        <nav class="flex -mb-px">
+          <a href="#" class="tab-link py-4 px-6 border-b-2 border-blue-600 font-medium text-blue-600" data-tab="details">
+            会议详情
+          </a>
+          <a href="#" class="tab-link py-4 px-6 border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="participants">
+            参会人员 (8)
+          </a>
+          <a href="#" class="tab-link py-4 px-6 border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="documents">
+            会议文件 (3)
+          </a>
+          <a href="#" class="tab-link py-4 px-6 border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="minutes">
+            会议纪要
+          </a>
+        </nav>
+      </div>
+
+      <!-- 会议详情内容 -->
+      <div id="details" class="tab-content active">
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+          <h3 class="text-lg font-bold text-gray-800 mb-4">会议描述</h3>
+          <p class="text-gray-700 mb-6">讨论Q3产品需求优先级和资源分配，确定各项目时间节点和负责人。重点讨论新功能A的可行性分析和技术实现方案。</p>
+          
+          <h3 class="text-lg font-bold text-gray-800 mb-4">会议议程</h3>
+          <ol class="list-decimal pl-5 space-y-3 text-gray-700">
+            <li>Q3产品需求概述 (14:00-14:15)</li>
+            <li>各项目优先级讨论 (14:15-14:45)</li>
+            <li>新功能A可行性分析 (14:45-15:15)</li>
+            <li>下一步行动计划 (15:15-15:30)</li>
+          </ol>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-bold text-gray-800 mb-4">会议链接</h3>
+          <div class="flex items-center bg-gray-50 p-3 rounded border border-gray-200 mb-4">
+            <i class="fas fa-video mr-3 text-blue-600"></i>
+            <div class="flex-1">
+              <p class="font-medium">Zoom会议链接</p>
+              <p class="text-sm text-gray-600">https://zoom.us/j/1234567890?pwd=abcdefg</p>
+            </div>
+            <button class="text-blue-600 hover:text-blue-800 font-medium">复制</button>
+          </div>
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-video mr-2"></i>
+            加入会议
+          </button>
+        </div>
+      </div>
+
+      <!-- 参会人员内容 -->
+      <div id="participants" class="tab-content">
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="p-4 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-bold text-gray-800">参会人员</h3>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm flex items-center">
+                <i class="fas fa-plus mr-1"></i>
+                添加人员
+              </button>
+            </div>
+          </div>
+          <ul class="divide-y divide-gray-200">
+            <li class="p-4 hover:bg-gray-50 flex items-center">
+              <img class="w-10 h-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+              <div class="flex-1">
+                <p class="font-medium">张经理</p>
+                <p class="text-sm text-gray-500">产品部</p>
+              </div>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">已确认</span>
+            </li>
+            <li class="p-4 hover:bg-gray-50 flex items-center">
+              <img class="w-10 h-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+              <div class="flex-1">
+                <p class="font-medium">李技术</p>
+                <p class="text-sm text-gray-500">技术部</p>
+              </div>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">已确认</span>
+            </li>
+            <li class="p-4 hover:bg-gray-50 flex items-center">
+              <img class="w-10 h-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+              <div class="flex-1">
+                <p class="font-medium">王设计</p>
+                <p class="text-sm text-gray-500">设计部</p>
+              </div>
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">待确认</span>
+            </li>
+            <!-- 更多参会人员... -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- 会议文件内容 -->
+      <div id="documents" class="tab-content">
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="p-4 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-bold text-gray-800">会议文件</h3>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm flex items-center">
+                <i class="fas fa-upload mr-1"></i>
+                上传文件
+              </button>
+            </div>
+          </div>
+          <ul class="divide-y divide-gray-200">
+            <li class="file-item p-4 flex items-center">
+              <div class="bg-blue-100 text-blue-800 p-3 rounded-lg mr-4">
+                <i class="fas fa-file-pdf text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-medium">Q3产品需求文档.pdf</p>
+                <p class="text-sm text-gray-500">上传于 2025-08-15 10:23 | 2.4MB</p>
+              </div>
+              <div class="flex space-x-2">
+                <button class="text-blue-600 hover:text-blue-800">
+                  <i class="fas fa-download"></i>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </li>
+            <li class="file-item p-4 flex items-center">
+              <div class="bg-green-100 text-green-800 p-3 rounded-lg mr-4">
+                <i class="fas fa-file-excel text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-medium">资源分配表.xlsx</p>
+                <p class="text-sm text-gray-500">上传于 2025-08-15 14:45 | 1.1MB</p>
+              </div>
+              <div class="flex space-x-2">
+                <button class="text-blue-600 hover:text-blue-800">
+                  <i class="fas fa-download"></i>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </li>
+            <li class="file-item p-4 flex items-center">
+              <div class="bg-purple-100 text-purple-800 p-3 rounded-lg mr-4">
+                <i class="fas fa-file-word text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-medium">会议议程.docx</p>
+                <p class="text-sm text-gray-500">上传于 2025-08-14 16:12 | 0.8MB</p>
+              </div>
+              <div class="flex space-x-2">
+                <button class="text-blue-600 hover:text-blue-800">
+                  <i class="fas fa-download"></i>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 会议纪要内容 -->
+      <div id="minutes" class="tab-content">
+        <div class="bg-white rounded-lg shadow p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold text-gray-800">会议纪要</h3>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm flex items-center">
+              <i class="fas fa-plus mr-1"></i>
+              添加纪要
+            </button>
+          </div>
+          <div class="border border-dashed border-gray-300 rounded-lg p-4 text-center text-gray-500">
+            <i class="fas fa-file-alt text-3xl mb-2"></i>
+            <p>暂无会议纪要</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 标签页切换
+    document.querySelectorAll('.tab-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 更新标签页导航样式
+        document.querySelectorAll('.tab-link').forEach(tab => {
+          tab.classList.remove('border-blue-600', 'text-blue-600');
+          tab.classList.add('border-transparent', 'text-gray-500');
+        });
+        this.classList.add('border-blue-600', 'text-blue-600');
+        this.classList.remove('border-transparent', 'text-gray-500');
+        
+        // 显示对应内容
+        const tabId = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // 删除会议确认
+    document.querySelector('.bg-red-600').addEventListener('click', function() {
+      if (confirm('确定要删除这个会议吗？此操作不可撤销。')) {
+        alert('会议已删除');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
+  
