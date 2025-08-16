@@ -1,7 +1,7 @@
 // @ts-ignore;
 import React, { useState } from 'react';
 // @ts-ignore;
-import { Button, Card, CardHeader, CardTitle, CardContent, Input, useToast } from '@/components/ui';
+import { Button, Card, Input, useToast } from '@/components/ui';
 // @ts-ignore;
 import { Lock, User } from 'lucide-react';
 
@@ -47,19 +47,12 @@ export default function Login(props) {
         }
       });
       if (result.records.length > 0) {
-        const user = result.records[0];
         toast({
           title: '登录成功'
         });
-        if (user.role === 'admin') {
-          $w.utils.navigateTo({
-            pageId: 'admin'
-          });
-        } else {
-          $w.utils.navigateTo({
-            pageId: 'meetings'
-          });
-        }
+        $w.utils.navigateTo({
+          pageId: 'home'
+        });
       } else {
         toast({
           title: '登录失败',
@@ -79,30 +72,21 @@ export default function Login(props) {
   };
   return <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-center">会议管理系统登录</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <div className="p-6 space-y-4">
+          <h1 className="text-2xl font-bold text-center">会议管理系统</h1>
+          
           <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <User className="h-4 w-4" />
-              <span>用户名</span>
-            </div>
-            <Input placeholder="请输入用户名" value={username} onChange={e => setUsername(e.target.value)} />
+            <Input placeholder="用户名" value={username} onChange={e => setUsername(e.target.value)} icon={<User className="h-4 w-4" />} />
           </div>
           
           <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <Lock className="h-4 w-4" />
-              <span>密码</span>
-            </div>
-            <Input type="password" placeholder="请输入密码" value={password} onChange={e => setPassword(e.target.value)} />
+            <Input type="password" placeholder="密码" value={password} onChange={e => setPassword(e.target.value)} icon={<Lock className="h-4 w-4" />} />
           </div>
           
           <Button className="w-full" onClick={handleLogin} disabled={loading}>
             {loading ? '登录中...' : '登录'}
           </Button>
-        </CardContent>
+        </div>
       </Card>
     </div>;
 }
