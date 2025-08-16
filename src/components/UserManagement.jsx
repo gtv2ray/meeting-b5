@@ -5,7 +5,7 @@ import { Button, Table, Input, Select, Modal, Badge, useToast } from '@/componen
 // @ts-ignore;
 import { Plus, Edit, Trash, Search } from 'lucide-react';
 
-function UserManagement({
+export default function UserManagement({
   $w
 }) {
   const [users, setUsers] = useState([]);
@@ -72,8 +72,8 @@ function UserManagement({
   };
   if (loading) {
     return <div className="flex justify-center p-8">
-      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-    </div>;
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+      </div>;
   }
   return <div className="p-4">
       <div className="flex justify-between mb-4">
@@ -158,4 +158,3 @@ function UserManagement({
       </Modal>
     </div>;
 }
-export default UserManagement;

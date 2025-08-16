@@ -1,7 +1,7 @@
 // @ts-ignore;
 import React, { useState } from 'react';
 // @ts-ignore;
-import { Button, Card, Tabs, TabsList, TabsTrigger, TabsContent, useToast } from '@/components/ui';
+import { Card, Tabs, TabsList, TabsTrigger, TabsContent, useToast } from '@/components/ui';
 // @ts-ignore;
 import { Users, Building, Shield } from 'lucide-react';
 
